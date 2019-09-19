@@ -1,11 +1,11 @@
-af9bb2b49e5e98873cd36fe41e47ca37 *DESCRIPTION
+939f3466254748457b96681689902ed3 *DESCRIPTION
 0c0080d828e632c89aab02fe8c963ed6 *NAMESPACE
-80e1babbf098885ba510a9b527c0cade *NEWS.md
+57b185f71a113667b1e120fa4ff71e4a *NEWS.md
 61d98c48952ef867de7fde7f711bab92 *R/ABCRef.R
 96bbc171ab0527353a40f5c51da51efc *R/ABCSMC.R
 b838af25d9aad689fdda14509e63f690 *R/PMCMC.R
 2f4c14834c409f12e01d4e9b6ad40e3b *R/RcppExports.R
-8fa9fe1bc50dd62cfaad9da47014eff5 *R/Rcpp_mparse.R
+cb716f2de044cc2bea99bbeabbea5aec *R/Rcpp_mparse.R
 df89502bd23bdb411c28b9b486ddf670 *R/SimBIID-package.R
 beeccb4450609e4ddb437f8ac8a2f266 *R/bootStates.R
 4aa50eef223012deefdec0522de88c82 *R/checkInputs.R
@@ -30,7 +30,7 @@ a048734c5430890c03d8813d98c4d12d *R/windowPMCMC.R
 1ae91436346f6bee6125d28348462184 *R/zzz.R
 aeaeb6f2096395d438c1cead5048d86b *data/ebola.rda
 d14684226d0d52b178051fb41325e330 *data/smallpox.rda
-613f19417c919c7a349c3c8d2c902faa *inst/simFunction.R
+564c7125448d590e818203d36cf38325 *inst/simFunction.R
 43c8fac6e0bf2125c88ef8f222033420 *man/ABCRef.Rd
 aa31650bd89b73998457386762e4b735 *man/ABCSMC.Rd
 908cf784f9b93b6deac4f258c033f07f *man/PMCMC.Rd
@@ -69,10 +69,10 @@ a28f0f221d50083ea12c6d6282460059 *tests/testthat/ABCSMC
 4adf890d60993cb833ff66e9bcb22fb8 *tests/testthat/ABCSMCsum
 fce40d6ee569dcda714893d75f46bc12 *tests/testthat/PMCMC
 0cd7d999d0b9e1769076c7b606834e42 *tests/testthat/PMCMCpred
-b616560a11304f8049e63ad606c54c8b *tests/testthat/mparse
-d6f02e1b66959d755e9616519edf46f7 *tests/testthat/mparseinc
-795d240facbcdcb2cedf73665bfec952 *tests/testthat/mparseinctspan
-ae08218067df83432ca58c9d592c06c4 *tests/testthat/mparsetspan
+5e073aa020b4d9a97f85eb0ac7742296 *tests/testthat/mparse
+0db1aa9d59660d552e6ab6673de2727f *tests/testthat/mparseinc
+382270d0f716de0944aadea9e577e0a6 *tests/testthat/mparseinctspan
+d4e0a02a65ed35db6e1fe24d38a944a3 *tests/testthat/mparsetspan
 8bafa7dbe8ed44417b5b606f13c98f8e *tests/testthat/run
 da9361698a95a4678c93f94629ecc808 *tests/testthat/runinc
 ea7b5e60d7fd42c182009a72614581be *tests/testthat/runinctspan
@@ -80,4 +80,4 @@ b8e84b4c648136d3a89f64d98c6d4632 *tests/testthat/runtspan
 df75f4b41eac644f60f7e449134595ee *tests/testthat/test-ABCRef.R
 622d3a69866f72079fc456d428515a5e *tests/testthat/test-ABCSMC.R
 85a4ad99864879cb5693e2324ddf8019 *tests/testthat/test-PMCMC.R
-0f2918b3a8162a706b8f42d84830949d *tests/testthat/test-run.R
+e7f0bcc263689ea28fe2fd43dfc3ccbb *tests/testthat/test-run.R
