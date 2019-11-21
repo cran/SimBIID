@@ -1,6 +1,6 @@
 Package: SimBIID
 Title: Simulation-Based Inference Methods for Infectious Disease Models
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: c(person("Trevelyan J.", "McKinley", email = "t.mckinley@exeter.ac.uk",
                 role = c("aut", "cre")),
              person("Stefan", "Widgren", role = "aut", email = "stefan.widgren@gmail.com", 
@@ -24,9 +24,9 @@ Suggests: parallel, GGally, testthat
 LinkingTo: Rcpp, RcppArmadillo
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.0
 NeedsCompilation: yes
-Packaged: 2019-09-19 14:04:18 UTC; tj
+Packaged: 2019-11-21 20:28:06 UTC; tj
 Author: Trevelyan J. McKinley [aut, cre],
   Stefan Widgren [aut] (Author of 'R/mparse.R'),
   Pavol Bauer [cph] (R/mparse.R),
@@ -34,4 +34,4 @@ Author: Trevelyan J. McKinley [aut, cre],
   Stefan Engblom [cph] (R/mparse.R)
 Maintainer: Trevelyan J. McKinley <t.mckinley@exeter.ac.uk>
 Repository: CRAN
-Date/Publication: 2019-09-19 14:20:02 UTC
+Date/Publication: 2019-11-21 20:50:02 UTC
