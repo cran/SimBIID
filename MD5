@@ -1,13 +1,13 @@
-e5e360e8b825c49d091ff4bc92a189cf *DESCRIPTION
+637f256ea9cf8b077990914dbe7adf7d *DESCRIPTION
 0c0080d828e632c89aab02fe8c963ed6 *NAMESPACE
-73f0a5da56948372aff0dfffa7ea0958 *NEWS.md
+fdeebce513a2f6aa828f5de5bb09c6ae *NEWS.md
 61d98c48952ef867de7fde7f711bab92 *R/ABCRef.R
 96bbc171ab0527353a40f5c51da51efc *R/ABCSMC.R
 b838af25d9aad689fdda14509e63f690 *R/PMCMC.R
 2f4c14834c409f12e01d4e9b6ad40e3b *R/RcppExports.R
 c8acf273b9c10f2f80966fbf3754b1fc *R/Rcpp_mparse.R
 a4de94628ddbf0580a360039e34637b4 *R/SimBIID-package.R
-beeccb4450609e4ddb437f8ac8a2f266 *R/bootStates.R
+336835e0d692cab28e6729af2a382626 *R/bootStates.R
 4aa50eef223012deefdec0522de88c82 *R/checkInputs.R
 b5b55f65f8d5fc3e547fd5552544dcc5 *R/compileRcpp.R
 edbbeccccdd32e059c0c06dfae722041 *R/data.R
@@ -16,7 +16,7 @@ edbbeccccdd32e059c0c06dfae722041 *R/data.R
 b09e748c3dfdadaae1b81ba872225b5b *R/plotABC.R
 ace07a9c077e9d752d59d4d78e2e8a33 *R/plotPMCMC.R
 ae4cf1c24e48da3e9b088c86f4485e3d *R/plotSimBIID_runs.R
-8f94282702273d1f4af0af803025844e *R/predictPMCMC.R
+214c6a80506d2f32f0f1c938d05f944a *R/predictPMCMC.R
 d5fad8acdadb3bc3f4654c96ed014fe9 *R/printABC.R
 5ceaba29d3289b50f94d0bcc105831bf *R/printPMCMC.R
 3ff79201a8158425a55611cc1b391b3a *R/printSimBIID_model.R
@@ -56,7 +56,7 @@ a38f07115b31c1ab1a3685f3616b2c9c *man/window.PMCMC.Rd
 6c118e194deed93bef3c8c5fe81fd2ff *src/RcppExports.cpp
 6f94b69701a31a1d59e546272d84545d *src/adaptUpdate.cpp
 f37051ced1f55f4c23dfe8cfd0f73ba1 *src/bootstrapParticleFilter.cpp
-bc78af73335bcdb3a5ac1afa97345902 *src/bootstrapParticleFilterState.cpp
+45792d0869094d9dac6c8ec686d6d777 *src/bootstrapParticleFilterState.cpp
 d6bddf4ae5a4981839e76f0cb2004a32 *src/cholArma.cpp
 85a0009c75c885b6ccedb65a435a66cb *src/functions.h
 05dc0a787836d360c909da343d97add7 *src/mvrnormArma.cpp
