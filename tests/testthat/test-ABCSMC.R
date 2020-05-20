@@ -99,4 +99,265 @@ test_that("ABCSMC works", {
     ## the first run always succeeds, but warns
     expect_known_output(summary(post), tmp, print = TRUE)
     
+    ## try to run 2 generations of ABC-SMC using fixed tolerances
+    tols <- matrix(c(50, 50, 50, 50), 2, 2, byrow = TRUE)
+    colnames(tols) <- c("finalsize", "finaltime")
+    expect_error(ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        ngen = 2,
+        npart = 50,
+        model = model
+    ))
+    tols <- matrix(c(50, 50, 51, 20), 2, 2, byrow = TRUE)
+    colnames(tols) <- c("finalsize", "finaltime")
+    expect_error(ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        ngen = 2,
+        npart = 50,
+        model = model
+    ))
+    
+    ## run 2 generations of ABC-SMC using fixed tolerances
+    tols <- matrix(c(50, 50, 50, 20), 2, 2, byrow = TRUE)
+    colnames(tols) <- c("finalsize", "finaltime")
+    post <- ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        ngen = 2,
+        npart = 50,
+        model = model
+    )
+    ## file to save results
+    tmp <- "ABCSMCtol"
+    ## the first run always succeeds, but warns
+    expect_known_output(post, tmp, print = TRUE)
+    
+    ## run one further generation
+    newtols <- c(finalsize = 20, finaltime = 15)
+    post <- ABCSMC(post, tols = newtols)
+    ## file to save results
+    tmp <- "ABCSMCtol1"
+    ## the first run always succeeds, but warns
+    expect_known_output(post, tmp, print = TRUE)
+    
+    ## run one further generation
+    expect_error(ABCSMC(post, tols = newtols))
+    newtols <- c(finalsize = 21, finaltime = 15)
+    expect_error(ABCSMC(post, tols = newtols))
+    
+    ## run further generation using ptols
+    expect_error(ABCSMC(post, tols = newtols, ptols = 0.8, ngen = 1))
+    post <- ABCSMC(post, ptols = 0.8, ngen = 1)
+    ## file to save results
+    tmp <- "ABCSMCtol2"
+    ## the first run always succeeds, but warns
+    expect_known_output(post, tmp, print = TRUE)
+    
+    ## run 2 generations of ABC-SMC using fixed tolerances
+    tols <- matrix(c(50, 50), 1, 2, byrow = TRUE)
+    colnames(tols) <- c("finalsize", "finaltime")
+    post <- ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        npart = 50,
+        model = model
+    )
+    
+    ## run two further generations
+    newtols <- matrix(c(50, 50, 40, 40), 2, 2, byrow = TRUE)
+    colnames(newtols) <- c("finalsize", "finaltime")
+    expect_error(ABCSMC(post, tols = newtols))
+    
+    ## run two further generations
+    newtols <- matrix(c(45, 45, 45, 45), 2, 2, byrow = TRUE)
+    colnames(newtols) <- c("finalsize", "finaltime")
+    expect_error(ABCSMC(post, tols = newtols))
+    
+    ## run two further generations
+    newtols <- matrix(c(45, 45, 40, 40), 2, 2, byrow = TRUE)
+    colnames(newtols) <- c("finalsize", "finaltime")
+    post <- ABCSMC(post, tols = newtols)
+    
+    ## test minimum tolerances in various situations
+    tols <- matrix(c(50, 50), 1, 2, byrow = TRUE)
+    colnames(tols) <- c("finalsize", "finaltime")
+    expect_error(ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        npart = 50,
+        model = model,
+        mintols = c(40, 40)
+    ))
+    mintols <- matrix(c(40, 40), 1, 2, byrow = TRUE)
+    colnames(mintols) <- c("finalsize", "finaltime")
+    expect_error(ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        npart = 50,
+        model = model,
+        mintols = mintols
+    ))
+    mintols <- c(finalsize = 40, finaltime = 40)
+    post <- ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        npart = 50,
+        model = model,
+        mintols = mintols
+    )
+    mintols <- c(finalsize = 50, finaltime = 40)
+    post <- ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        npart = 50,
+        model = model,
+        mintols = mintols
+    )
+    mintols <- c(finalsize = 51, finaltime = 50)
+    expect_error(ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        npart = 50,
+        model = model,
+        mintols = mintols
+    ))
+    
+    ## run two further generations
+    newtols <- matrix(c(40, 40, 38, 38), 2, 2, byrow = TRUE)
+    colnames(newtols) <- c("finalsize", "finaltime")
+    expect_error(ABCSMC(post, tols = newtols))
+    
+    ## run two further generations
+    mintols <- c(40, 40)
+    names(mintols) <- c("finalsize", "finaltime")
+    expect_error(ABCSMC(post, tols = newtols, mintols = mintols))
+    
+    ## run two further generations
+    mintols <- c(35, 35)
+    names(mintols) <- c("finalsize", "finaltime")
+    post <- ABCSMC(post, tols = newtols, mintols = mintols)
+    
+    ## run two further generations
+    post <- ABCSMC(post, ptols = 0.5, ngen = 1)
+    expect_error(ABCSMC(post, ptols = 0.5, ngen = 1))
+    mintols <- c(30, 30)
+    names(mintols) <- c("finalsize", "finaltime")
+    post <- ABCSMC(post, ptols = 0.5, ngen = 1, mintols = mintols)
+    
+    ## check reproducibility in serial
+    
+    tols <- c(finalsize = 50, finaltime = 50)
+    set.seed(50)
+    post <- ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        npart = 10,
+        model = model
+    )
+    set.seed(50)
+    post1 <- ABCSMC(
+        x = data,
+        priors = priors,
+        func = simSIR,
+        u = iniStates,
+        tols = tols,
+        npart = 10,
+        model = model
+    )
+    
+    expect_identical(post, post1)
+    
+    ## check reproducibility in parallel
+    
+    if(.Platform$OS.type != "windows" & requireNamespace("parallel", quietly = TRUE)) {
+        tols <- c(finalsize = 50, finaltime = 50)
+        set.seed(50)
+        post <- ABCSMC(
+            x = data,
+            priors = priors,
+            func = simSIR,
+            u = iniStates,
+            tols = tols,
+            npart = 10,
+            model = model,
+            parallel = TRUE,
+            mc.cores = 2
+        )
+        set.seed(50)
+        post1 <- ABCSMC(
+            x = data,
+            priors = priors,
+            func = simSIR,
+            u = iniStates,
+            tols = tols,
+            npart = 10,
+            model = model,
+            parallel = TRUE,
+            mc.cores = 2
+        )
+        
+        expect_identical(post, post1)
+        
+        ## check for changing seeds in parallel
+        
+        tols <- c(finalsize = 50, finaltime = 50)
+        set.seed(50)
+        post <- ABCSMC(
+            x = data,
+            priors = priors,
+            func = simSIR,
+            u = iniStates,
+            tols = tols,
+            npart = 10,
+            model = model,
+            parallel = TRUE,
+            mc.cores = 2
+        )
+        post1 <- ABCSMC(
+            x = data,
+            priors = priors,
+            func = simSIR,
+            u = iniStates,
+            tols = tols,
+            npart = 10,
+            model = model,
+            parallel = TRUE,
+            mc.cores = 2
+        )
+        
+        expect_false(identical(post, post1))
+    }
+    
 })
